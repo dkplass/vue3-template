@@ -8,9 +8,9 @@ export type UserProfileReqType = {};
  */
 export type UserProfileResType = {
   //
-  empName: string;
+  name: string;
   //
-  empNo: string;
+  account: string;
   //
   auth: object;
   //

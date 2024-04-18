@@ -4,20 +4,26 @@ import { defineStore } from 'pinia';
 import type { UserProfileReqType, UserProfileResType } from '@/type/user-profile-type';
 
 const initUserProfile = {
-  empName: '',
-  empNo: '',
+  name: '',
+  account: '',
   auth: {}
 } as Partial<UserProfileResType>;
 
 export const useUserProfileStore = defineStore('user-profile', {
   state: () => ({
-    userProfile: useStorage('userProfile', initUserProfile)
+    userProfile: useStorage('userProfile', initUserProfile),
+    token: useStorage('token', '')
   }),
   getters: {},
   actions: {
     async doGetUserProfile() {
-      const result = await userProfileApi.doGetUserProfile({} as UserProfileReqType);
-      this.userProfile = result;
+      return await userProfileApi.doGetUserProfile({} as UserProfileReqType);
+    },
+    doStoreUserProfile(userProfile: UserProfileResType) {
+      this.userProfile = userProfile;
+    },
+    doResetUserProfile() {
+      this.userProfile = initUserProfile;
     }
   }
 });
