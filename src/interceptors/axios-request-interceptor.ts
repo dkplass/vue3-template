@@ -6,7 +6,6 @@ import type { App } from 'vue';
 
 function handleRequest(config: InternalAxiosRequestConfig, app: App) {
   const globalStore = useGlobalStore();
-  const { $keycloak } = app.config.globalProperties;
 
   const isIgnoreUrls = IGNORE_GLOBAL_SPINNER_URLS.some((url) => {
     return config.url === url;
@@ -16,9 +15,8 @@ function handleRequest(config: InternalAxiosRequestConfig, app: App) {
     delay(() => globalStore.doIncrementAjaxReq(), 500);
   }
 
-  if (!$keycloak) {
-    config.headers!.Authorization = `Bearer ${$keycloak.config}`;
-  }
+  // ADD API TOKEN
+  // config.headers!.Authorization = `Bearer ${token}`;
 
   globalStore.doResetSessionExpiredTime();
 
