@@ -1,4 +1,4 @@
-import HomeView from '../views/HomeView.vue';
+import AppLayout from '@/layout/AppLayout.vue';
 import { useUserProfileStore } from '@/stores/userProfile';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { UserProfileResType } from '@/type/user-profile-type';
@@ -8,16 +8,14 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: AppLayout,
+      children: [
+        {
+          path: '/',
+          name: 'dashboard',
+          component: () => import('../views/Dashboard.vue')
+        }
+      ]
     },
     {
       path: '/not-found',
@@ -42,17 +40,17 @@ router.beforeEach((to, from, next) => {
 
   // token 驗證
   // 登入重取userProfile
-  if (!profileStore.userProfile.account) {
-    profileStore.doGetUserProfile().then((userProfile: UserProfileResType) => {
-      if (userProfile?.account) {
-        profileStore.doStoreUserProfile(userProfile);
-        return next();
-      } else {
-        profileStore.doResetUserProfile();
-        return next();
-      }
-    });
-  }
+  // if (!profileStore.userProfile.account) {
+  //   profileStore.doGetUserProfile().then((userProfile: UserProfileResType) => {
+  //     if (userProfile?.account) {
+  //       profileStore.doStoreUserProfile(userProfile);
+  //       return next();
+  //     } else {
+  //       profileStore.doResetUserProfile();
+  //       return next();
+  //     }
+  //   });
+  // }
 
   return next();
 });

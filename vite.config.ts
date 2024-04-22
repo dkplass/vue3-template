@@ -37,16 +37,16 @@ const config = defineConfig(({ mode }) => {
         }
       }
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@import "@/assets/scss/main.scss";`
-        },
-        less: {
-          javascriptEnabled: true
-        }
-      }
-    },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: `@import "@/assets/main.scss";`
+    //     },
+    //     less: {
+    //       javascriptEnabled: true
+    //     }
+    //   }
+    // },
     server: {
       host: 'localhost', // 0.0.0.0
       port: 3001,
