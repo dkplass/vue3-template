@@ -1,6 +1,6 @@
 <script setup>
+import { useLayout } from '@/layout/composables/layout';
 import { onMounted, reactive, ref, watch } from 'vue';
-// import { useLayout } from '@/layout/composables/layout';
 // import { ProductService } from '@/service/ProductService';
 
 const { isDarkTheme } = useLayout();
@@ -32,10 +32,10 @@ const items = ref([
   { label: 'Remove', icon: 'pi pi-fw pi-minus' }
 ]);
 const lineOptions = ref(null);
-const productService = new ProductService();
+// const productService = new ProductService();
 
 onMounted(() => {
-  productService.getProductsSmall().then((data) => (products.value = data));
+  // productService.getProductsSmall().then((data) => (products.value = data));
 });
 
 const formatCurrency = (value) => {
