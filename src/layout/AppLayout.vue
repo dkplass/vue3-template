@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import AppConfig from './AppConfig.vue';
+import AppConfig from './AppConfig.vue';
 import AppTopbar from './AppTopbar.vue';
 import { useLayout } from '@/layout/composables/layout';
 import { ref, computed, watch } from 'vue';
@@ -67,9 +67,9 @@ function isOutsideClicked(event: Event) {
 <template>
   <div class="layout-wrapper" :class="containerClass">
     <app-topbar></app-topbar>
-    <!-- <app-config></app-config> -->
+    <app-config></app-config>
   </div>
-  <Toast />
+  <!-- <Toast /> -->
 </template>
 
 <style lang="scss" scoped></style>
