@@ -41,6 +41,15 @@
   a {
     user-select: none;
 
+    &.root-link {
+      color: inherit;
+
+      &.active-route {
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+    }
+
     &.active-menuitem {
       > .layout-submenu-toggler {
         transform: rotate(-180deg);

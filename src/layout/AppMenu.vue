@@ -16,11 +16,11 @@ const routes = computed(() => {
       <app-menu-item :item="route" :base-path="route.path"></app-menu-item>
       <li class="menu-separator"></li>
     </template>
-    <li>
-      <a href="https://www.primefaces.org/primeblocks-vue/#/" target="_blank">
-        <img src="/layout/images/banner-primeblocks.png" alt="Prime Blocks" class="w-full mt-3" />
+    <!-- <li>
+      <a href="javascript:void(0)" target="_blank">
+        <img src="#" alt="Advertising" class="w-full mt-3" />
       </a>
-    </li>
+    </li> -->
   </ul>
 </template>
 

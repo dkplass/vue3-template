@@ -97,7 +97,7 @@ function itemClick(event: Event, item: RouteRecordRaw, index: number) {
 
   const { overlayMenuActive, staticMenuMobileActive } = layoutState;
 
-  if (item.path && (staticMenuMobileActive.value || overlayMenuActive.value)) {
+  if (staticMenuMobileActive.value || overlayMenuActive.value) {
     onMenuToggle();
   }
 
@@ -185,7 +185,10 @@ onBeforeMount(() => {
         <router-link
           v-else
           :to="resolvePath(theOnlyOneChild.path)"
-          :class="{ 'active-route': checkActiveRoute(theOnlyOneChild) }"
+          :class="{
+            'root-link': props.root,
+            'active-route': checkActiveRoute(theOnlyOneChild)
+          }"
           @click="itemClick($event, theOnlyOneChild, index)"
         >
           <i :class="theOnlyOneChild.meta.icon" class="layout-menuitem-icon"></i>
