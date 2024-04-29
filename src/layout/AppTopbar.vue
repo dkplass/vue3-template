@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { useLayout } from '@/layout/composables/layout';
+import { useUserProfileStore } from '@/stores/userProfile';
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 //
 const { layoutConfig, onMenuToggle } = useLayout();
 
 //
+const userProfileStore = useUserProfileStore();
+
+//
 const router = useRouter();
+
+//
+const route = useRoute();
 
 //
 const outsideClickListener = ref<EventListener | null>(null);
@@ -32,6 +39,17 @@ const topbarMenuClasses = computed(() => {
  */
 function onTopbarMenuButton() {
   topbarMenuActive.value = !topbarMenuActive.value;
+}
+
+/**
+ *
+ */
+function onLogout() {
+  userProfileStore.doLogout();
+
+  router.push(`/login?redirect=${route.fullPath}`).catch((err) => {
+    console.warn(err);
+  });
 }
 
 /**
@@ -110,6 +128,10 @@ onBeforeUnmount(() => {
     </button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
+      <button class="p-link layout-topbar-button" @click="onLogout()">
+        <i class=""></i>
+        <span>Log out</span>
+      </button>
       <button class="p-link layout-topbar-button" @click="onTopbarMenuButton()">
         <i class="pi pi-calendar"></i>
         <span>Calendar</span>

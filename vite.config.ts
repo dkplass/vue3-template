@@ -2,6 +2,7 @@ import vue from '@vitejs/plugin-vue';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv } from 'vite';
 import viteCompression from 'vite-plugin-compression';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
@@ -18,7 +19,8 @@ const config = defineConfig(({ mode }) => {
         algorithm: 'gzip',
         threshold: 1025,
         deleteOriginFile: false
-      })
+      }),
+      nodePolyfills({ include: ['path'] })
     ],
     resolve: {
       alias: {

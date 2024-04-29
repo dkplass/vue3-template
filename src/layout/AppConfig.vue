@@ -4,7 +4,7 @@ import themeList from './composables/theme-list';
 import { useLayout } from '@/layout/composables/layout';
 import { usePrimeVue } from 'primevue/config';
 import { ref, computed } from 'vue';
-import type { BasciConfigType } from '@/type/basic-type';
+import type { BasciConfigType } from '@/interface/basic-type';
 import type { PrimeVueConfiguration } from 'primevue/config/PrimeVue';
 
 const $primevue = usePrimeVue();

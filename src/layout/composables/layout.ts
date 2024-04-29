@@ -1,7 +1,26 @@
 import { toRefs, reactive, computed } from 'vue';
+import type { ToRefs, ComputedRef } from 'vue';
+
+interface IUseLayout {
+  layoutConfig: ToRefs<typeof layoutConfig>;
+  layoutState: ToRefs<typeof layoutState>;
+  setScale(scale: number): void;
+  setActiveMenuItem(item: any): void;
+  onMenuToggle(): void;
+  isSidebarActive: ComputedRef;
+  isDarkTheme: ComputedRef;
+}
 
 /** */
-const layoutConfig = reactive({
+const layoutConfig = reactive<{
+  ripple: boolean;
+  darkTheme: boolean;
+  inputStyle: string;
+  menuMode: string;
+  theme: string;
+  scale: number;
+  activeMenuItem: Nullable<string>;
+}>({
   ripple: true,
   darkTheme: true,
   inputStyle: 'outlined',
@@ -12,7 +31,14 @@ const layoutConfig = reactive({
 });
 
 /** */
-const layoutState = reactive({
+const layoutState = reactive<{
+  staticMenuDesktopInactive: boolean;
+  overlayMenuActive: boolean;
+  profileSidebarVisible: boolean;
+  configSidebarVisible: boolean;
+  staticMenuMobileActive: boolean;
+  menuHoverActive: boolean;
+}>({
   staticMenuDesktopInactive: false,
   overlayMenuActive: false,
   profileSidebarVisible: false,
@@ -21,7 +47,7 @@ const layoutState = reactive({
   menuHoverActive: false
 });
 
-export function useLayout() {
+export function useLayout(): IUseLayout {
   /** */
   const setScale = (scale: number) => {
     layoutConfig.scale = scale;
@@ -29,8 +55,8 @@ export function useLayout() {
 
   // TODO: declare menu type, because item should be menu type
   /** */
-  const setActiveMenuItem = (item: any) => {
-    layoutConfig.activeMenuItem = item.value || item;
+  const setActiveMenuItem = (item: Nullable<string>) => {
+    layoutConfig.activeMenuItem = item;
   };
 
   /** */

@@ -1,11 +1,13 @@
 import App from './App.vue';
 import router from './router';
+import { defaultGurad } from './router/router-guard';
 import setupAxiosConfig from '@/conf/axios-config';
 import setupGlobalComponents from '@/conf/global-components';
 import setupPiniaConfig from '@/conf/pinia-config';
 // import VueKeyCloak from '@dsb-norge/vue-keycloak-js';
 import PrimeVue from 'primevue/config';
 import { createApp } from 'vue';
+import '@/conf/axios-mock-adapter-config';
 
 import '@/assets/main.scss';
 
@@ -14,6 +16,8 @@ const app = createApp(App);
 setupAxiosConfig(app);
 setupGlobalComponents(app);
 setupPiniaConfig(app);
+
+defaultGurad;
 
 // app.use(VueKeyCloak, {
 //   init: {

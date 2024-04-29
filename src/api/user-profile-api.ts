@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { UserProfileReqType, UserProfileResType } from '@/type/user-profile-type';
+import type { IUserProfileReq, IUserProfile } from '@/interface/IUserProfile';
 
 export default {
   /**
@@ -7,8 +7,18 @@ export default {
    * @param payload
    * @returns
    */
-  doGetUserProfile: async function (payload: UserProfileReqType): Promise<UserProfileResType> {
-    const result = await axios.post('', payload);
+  doLogin: async function (payload: IUserProfileReq): Promise<string> {
+    const result = await axios.post('/login', payload);
+    return result.data;
+  },
+
+  /**
+   *
+   * @param payload
+   * @returns
+   */
+  doGetUserProfile: async function (): Promise<IUserProfile> {
+    const result = await axios.post('/getUserProfile');
     return result.data.body;
   }
 };
