@@ -3,10 +3,10 @@ import { handleResponse, handleResponseError } from '@/interceptors/axios-respon
 import axios from 'axios';
 import type { App } from 'vue';
 
-const { VITE_APP_BASE_URL } = import.meta.env;
+const { VITE_APP_BASE_URL, VITE_SESSION_EXPIRATION } = import.meta.env;
 
 export default (app: App) => {
-  axios.defaults.timeout = 5000;
+  axios.defaults.timeout = VITE_SESSION_EXPIRATION;
   axios.defaults.baseURL = VITE_APP_BASE_URL;
   axios.defaults.withCredentials = true;
   axios.interceptors.request.use((config) => handleRequest(config, app), handleRequestError);

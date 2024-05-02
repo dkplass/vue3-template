@@ -7,7 +7,7 @@ import setupPiniaConfig from '@/conf/pinia-config';
 // import VueKeyCloak from '@dsb-norge/vue-keycloak-js';
 import PrimeVue from 'primevue/config';
 import { createApp } from 'vue';
-import '@/conf/axios-mock-adapter-config';
+// import '@/conf/axios-mock-adapter-config';
 
 import '@/assets/main.scss';
 
