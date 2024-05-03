@@ -129,7 +129,7 @@ onBeforeUnmount(() => {
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
       <button class="p-link layout-topbar-button" @click="onLogout()">
-        <i class=""></i>
+        <i class="pi pi-sign-out"></i>
         <span>Log out</span>
       </button>
       <button class="p-link layout-topbar-button" @click="onTopbarMenuButton()">

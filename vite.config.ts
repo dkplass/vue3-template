@@ -50,23 +50,21 @@ const config = defineConfig(({ mode }) => {
     //   }
     // },
     server: {
-      host: 'localhost', // 0.0.0.0
+      //host: 'localhost', // 0.0.0.0
       port: 3001,
       proxy: {
-        // '/api': {
-        //   target: 'http://localhost:9090/api',
-        //   rewrite: (path) => path.replace(/^\/api/, ''),
-        //   changeOrigin: true
-        //   // cookiePathRewrite: {
-        //   //   '/api': '/'
-        //   // }
-        // }
+        '/api': {
+          target: `http://localhost:9090/api/`,
+          changeOrigin: true, // needed for virtual hosted sites
+          secure: false,
+          rewrite: (path: string) => path.replace(/^\/api/, '')
+        }
         // '/api': {
         //   target: 'http://localhost:9090',
+        //   rewrite: (path) => path.replace(/^\/api/, ''),
         //   changeOrigin: true,
-        //   secure: false,
-        //   pathRewrite: {
-        //     '^/api': ''
+        //   cookiePathRewrite: {
+        //     '/api': '/'
         //   }
         // }
       }

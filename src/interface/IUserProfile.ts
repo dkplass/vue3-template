@@ -8,11 +8,13 @@ export interface IUserProfileReq {
 
 /** */
 export interface IUserProfile {
-  token: string;
-  userid: string;
+  id: number;
+  username: string;
+  password: string;
   name: string;
-  avatarUrl: string;
-  intro: string;
-  roles: string[];
   email: string;
+  phone: string;
+  avatar: string;
+  introduction: string;
+  roles: string[];
 }

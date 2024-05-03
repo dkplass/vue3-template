@@ -8,7 +8,7 @@ const { VITE_APP_BASE_URL, VITE_SESSION_EXPIRATION } = import.meta.env;
 export default (app: App) => {
   axios.defaults.timeout = VITE_SESSION_EXPIRATION;
   axios.defaults.baseURL = VITE_APP_BASE_URL;
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
   axios.interceptors.request.use((config) => handleRequest(config, app), handleRequestError);
   axios.interceptors.response.use(handleResponse, handleResponseError);
 };

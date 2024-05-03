@@ -30,7 +30,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: 'dashboard',
-        component: Constructor,
+        component: () => import('@/views/Dashboard.vue'),
         name: 'dashboard',
         meta: {
           title: 'dashboard',
@@ -128,7 +128,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
     ]
   },
   {
-    path: 'https://github.com/dkplass/vue3-template',
+    path: '//github.com/dkplass/vue3-template',
     redirect: '',
     meta: {
       title: 'Github Page'
@@ -136,7 +136,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '*',
+    path: '/:catchAll(.*)',
     redirect: '/404',
     meta: { hidden: true }
   }

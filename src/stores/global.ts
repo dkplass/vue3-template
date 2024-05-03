@@ -5,7 +5,7 @@ export const useGlobalStore = defineStore('global', {
   state: () => ({
     axios: {
       requestCount: 0,
-      sessionExpiredTime: import.meta.env.VITE_SESSION_EXPIRATION
+      sessionExpiredTime: import.meta.env.VITE_SESSION_EXPIRATION.toString()
     }
   }),
   getters: {
@@ -21,10 +21,9 @@ export const useGlobalStore = defineStore('global', {
       this.axios.requestCount--;
     },
     doResetSessionExpiredTime() {
-      this.axios.sessionExpiredTime = moment().add(
-        import.meta.env.VITE_SESSION_EXPIRATION,
-        'minutes'
-      );
+      this.axios.sessionExpiredTime = moment()
+        .add(import.meta.env.VITE_SESSION_EXPIRATION, 'minutes')
+        .toString();
     }
   }
 });

@@ -15,6 +15,10 @@ export const defaultGurad = router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' });
     } else {
+      console.log(
+        userProfileStore.userProfile.roles && userProfileStore.userProfile.roles.length === 0
+      );
+      console.log(userProfileStore);
       if (userProfileStore.userProfile.roles && userProfileStore.userProfile.roles.length === 0) {
         //
         try {
@@ -26,8 +30,11 @@ export const defaultGurad = router.beforeEach(async (to, from, next) => {
             router.addRoute(route);
           });
 
+          console.log(to);
+
           next({ ...to, replace: true });
         } catch (error) {
+          console.log(error);
           userProfileStore.resetToken();
           next(`/login?redirect=${to.path}`);
         }

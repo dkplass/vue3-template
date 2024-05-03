@@ -56,6 +56,7 @@ export const useUserProfileStore = defineStore('user-profile', {
     async doChangeRole() {},
     /** */
     async doLogout() {
+      await userProfileApi.doLogout();
       this.resetToken();
       this.resetUserProfile();
     }

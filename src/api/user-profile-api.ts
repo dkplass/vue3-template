@@ -8,8 +8,8 @@ export default {
    * @returns
    */
   doLogin: async function (payload: IUserProfileReq): Promise<string> {
-    const result = await axios.post('/login', payload);
-    return result.data;
+    const result = await axios.post('/user/login', payload);
+    return result.data.body;
   },
 
   /**
@@ -18,7 +18,16 @@ export default {
    * @returns
    */
   doGetUserProfile: async function (): Promise<IUserProfile> {
-    const result = await axios.post('/getUserProfile');
+    const result = await axios.post('/user/getUserProfile');
     return result.data.body;
+  },
+
+  /**
+   *
+   * @returns
+   */
+  doLogout: async function (): Promise<void> {
+    const result = await axios.post('/user/logout');
+    return result.data;
   }
 };
