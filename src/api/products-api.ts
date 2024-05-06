@@ -5,15 +5,14 @@ export default {
    *
    */
   getProductsSmall: async function () {
-    const result = await axios.get('/products');
+    const result = await axios.post('/product/getProductsSmall');
     return result.data.body;
   },
   /**
    *
    */
   getProducts: async function () {
-    const result = await axios.post('/api/products');
-    console.log(result);
+    const result = await axios.post('/product/getProducts');
     return result.data.body;
   },
   /**

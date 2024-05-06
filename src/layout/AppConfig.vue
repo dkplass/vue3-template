@@ -10,6 +10,8 @@ import type { PrimeVueConfiguration } from 'primevue/config/PrimeVue';
 const $primevue = usePrimeVue();
 const { setScale, layoutConfig } = useLayout();
 
+console.log(layoutConfig.darkTheme.value);
+
 defineProps({
   simple: {
     type: Boolean,

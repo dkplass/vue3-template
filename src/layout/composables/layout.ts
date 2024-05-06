@@ -22,7 +22,7 @@ const layoutConfig = reactive<{
   activeMenuItem: Nullable<string>;
 }>({
   ripple: true,
-  darkTheme: true,
+  darkTheme: false,
   inputStyle: 'outlined',
   menuMode: 'static',
   theme: 'aura-light-green',

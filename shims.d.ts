@@ -8,7 +8,7 @@ declare global {
 
   type Nullable<T> = T | null | undefined;
 
-  type Dictionary<T> = { [key: string]: T };
+  type GenericObject<T> = { [key: string]: T };
 }
 
 declare module '*.vue' {

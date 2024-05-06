@@ -22,7 +22,7 @@ const checked = ref<boolean>(false);
 
 const redirect = ref<string | undefined>();
 
-const otherQuery: Dictionary<string> = {};
+const otherQuery: GenericObject<string> = {};
 
 const logoUrl = computed(() => {
   return `/layout/images/${layoutConfig.darkTheme.value ? 'logo-white' : 'logo-dark'}.svg`;
