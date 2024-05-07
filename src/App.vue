@@ -5,6 +5,7 @@ import OverlayLoader from '@/components/OverlayLoader.vue';
 <template>
   <RouterView />
   <OverlayLoader></OverlayLoader>
+  <PrimeConfirmDialog></PrimeConfirmDialog>
 </template>
 
 <style scoped></style>

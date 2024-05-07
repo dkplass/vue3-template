@@ -10,7 +10,6 @@ const isShowSpinner = ref<boolean>(false);
 watch(
   () => globalStore.isShowSpinner,
   (newVal) => {
-    console.log(newVal);
     isShowSpinner.value = newVal;
   },
   { immediate: true }

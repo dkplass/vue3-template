@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import ProductsApi from '@/api/products-api';
+import { useAppComfirm } from '@/hooks/useComfirm';
 import { useLayout } from '@/layout/composables/layout';
 import Menu from 'primevue/menu';
+import { useConfirm } from 'primevue/useconfirm';
 import {
   getCurrentInstance,
   onMounted,
@@ -11,6 +13,10 @@ import {
   type ComponentInternalInstance
 } from 'vue';
 import type { IProduct } from '@/interface/IProduct';
+
+const confirm = useConfirm();
+
+const confirm2 = useAppComfirm();
 
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 
@@ -168,7 +174,40 @@ function applyDarkTheme() {
 onMounted(() => {
   doGetProductsSmall();
 
+  // test  overlay by plugins way
   proxy?.$overlay();
+
+  // confirm.require({
+  //   message: 'Are you sure you want to proceed?',
+  //   header: 'Confirmation',
+  //   icon: 'pi pi-exclamation-triangle',
+  //   rejectClass: 'p-button-secondary p-button-outlined',
+  //   rejectLabel: 'Cancel',
+  //   acceptLabel: 'Save',
+  //   accept: () => {
+  //     console.log('accept');
+  //   },
+  //   reject: () => {
+  //     console.log('reject');
+  //   }
+  // });
+
+  // proxy?.$confirm.require({
+  //   message: 'Are you sure you want to proceed?',
+  //   header: 'Confirmation',
+  //   icon: 'pi pi-exclamation-triangle',
+  //   rejectClass: 'p-button-secondary p-button-outlined',
+  //   rejectLabel: 'Cancel',
+  //   acceptLabel: 'Save',
+  //   accept: () => {
+  //     console.log('accept');
+  //   },
+  //   reject: () => {
+  //     console.log('reject');
+  //   }
+  // });
+
+  // confirm2.show({ title: 'Confirm', content: 'test', type: 'Success' });
 });
 
 watch(
