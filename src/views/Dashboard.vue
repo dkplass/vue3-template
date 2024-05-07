@@ -2,8 +2,17 @@
 import ProductsApi from '@/api/products-api';
 import { useLayout } from '@/layout/composables/layout';
 import Menu from 'primevue/menu';
-import { onMounted, reactive, ref, watch } from 'vue';
+import {
+  getCurrentInstance,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+  type ComponentInternalInstance
+} from 'vue';
 import type { IProduct } from '@/interface/IProduct';
+
+const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 
 const { isDarkTheme } = useLayout();
 
@@ -158,6 +167,8 @@ function applyDarkTheme() {
 
 onMounted(() => {
   doGetProductsSmall();
+
+  proxy?.$overlay();
 });
 
 watch(
@@ -188,9 +199,9 @@ watch(
           >
             <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
           </div>
-          <span class="text-green-500 font-medium">24 new</span>
-          <span class="text-500">since last visit</span>
         </div>
+        <span class="text-green-500 font-medium">24 new</span>
+        <span class="text-500">since last visit</span>
       </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-3">

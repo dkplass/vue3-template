@@ -65,7 +65,7 @@ import Menu from 'primevue/menu';
 import Password from 'primevue/password';
 // import PickList from 'primevue/picklist';
 // import ProgressBar from 'primevue/progressbar';
-// import ProgressSpinner from 'primevue/progressspinner';
+import ProgressSpinner from 'primevue/progressspinner';
 // import RadioButton from 'primevue/radiobutton';
 // import Rating from 'primevue/rating';
 // import Ripple from 'primevue/ripple';
@@ -167,7 +167,7 @@ export default (app: App) => {
   app.component('PrimePassword', Password);
   // app.component('PrimePickList', PickList);
   // app.component('PrimeProgressBar', ProgressBar);
-  // app.component('PrimeProgressSpinner', ProgressSpinner);
+  app.component('PrimeProgressSpinner', ProgressSpinner);
   // app.component('PrimeRadioButton', RadioButton);
   // app.component('PrimeRating', Rating);
   // app.component('PrimeRow', Row);

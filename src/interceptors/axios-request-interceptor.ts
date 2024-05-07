@@ -13,6 +13,7 @@ function handleRequest(config: InternalAxiosRequestConfig, app: App) {
   });
 
   if (!isIgnoreUrls) {
+    // 時間過短就不出現loader
     delay(() => globalStore.doIncrementAjaxReq(), 500);
   }
 

@@ -4,13 +4,11 @@ import themeList from './composables/theme-list';
 import { useLayout } from '@/layout/composables/layout';
 import { usePrimeVue } from 'primevue/config';
 import { ref, computed } from 'vue';
-import type { BasciConfigType } from '@/interface/basic-type';
+import type { IBasciConfig } from '@/interface/IBasciConfig';
 import type { PrimeVueConfiguration } from 'primevue/config/PrimeVue';
 
 const $primevue = usePrimeVue();
 const { setScale, layoutConfig } = useLayout();
-
-console.log(layoutConfig.darkTheme.value);
 
 defineProps({
   simple: {
@@ -26,13 +24,13 @@ const scales = ref<number[]>([12, 13, 14, 15, 16]);
 const visible = ref<boolean>(false);
 
 //
-const inputStyles = ref<BasciConfigType[]>([
+const inputStyles = ref<IBasciConfig[]>([
   { label: 'Outlined', value: 'outlined' },
   { label: 'Filled', value: 'filled' }
 ]);
 
 //
-const menuModes = ref<BasciConfigType[]>([
+const menuModes = ref<IBasciConfig[]>([
   { label: 'Static', value: 'static' },
   { label: 'Overlay', value: 'overlay' }
 ]);
