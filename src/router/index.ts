@@ -54,20 +54,29 @@ export const asyncRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: 'page',
-        component: shallowRef(Constructor),
+        component: () => import('@/views/permission/Page.vue'),
         name: 'PagePermission',
         meta: {
-          title: 'pagePermission',
+          title: 'Page Permission',
           roles: ['admin'] // or you can only set roles in sub nav
         }
       },
       {
         path: 'directive',
-        component: shallowRef(Constructor),
+        component: () => import('@/views/permission/Directive.vue'),
         name: 'DirectivePermission',
         meta: {
-          title: 'directivePermission'
+          title: 'Directive Permission'
           // if do not set roles, means: this page does not require permission
+        }
+      },
+      {
+        path: 'role',
+        component: () => shallowRef(Constructor),
+        name: 'RolePermission',
+        meta: {
+          title: 'rolePermission',
+          roles: ['admin'] // or you can only set roles in sub nav
         }
       }
     ]

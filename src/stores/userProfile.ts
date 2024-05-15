@@ -1,15 +1,29 @@
+import { usePermissionStore } from './permission';
 import userProfileApi from '@/api/user-profile-api';
+import router from '@/router/index';
 import { useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import type { IUserProfile } from '@/interface/IUserProfile';
+import type { IUserProfile, RolesType } from '@/interface/IUserProfile';
+
+// const initUserProfile = {
+//   name: '',
+//   avatarUrl: '',
+//   intro: '',
+//   roles: [],
+//   email: ''
+// } as Partial<IUserProfile>;
 
 const initUserProfile = {
+  id: null,
+  username: '',
+  password: '',
   name: '',
-  avatarUrl: '',
-  intro: '',
-  roles: [],
-  email: ''
-} as Partial<IUserProfile>;
+  email: '',
+  phone: '',
+  avatar: '',
+  introduction: '',
+  roles: []
+} as IUserProfile;
 
 export const useUserProfileStore = defineStore('user-profile', {
   state: () => ({
@@ -53,7 +67,19 @@ export const useUserProfileStore = defineStore('user-profile', {
       this.setUserProfile(result);
     },
     /** */
-    async doChangeRole() {},
+    async doChangeRole(payload: keyof typeof RolesType) {
+      await userProfileApi.doChangeRole({ role: payload });
+
+      await this.doGetUserProfile();
+
+      const permissionStore = usePermissionStore();
+
+      permissionStore.generateRoutes(this.userProfile.roles);
+
+      permissionStore.dynamicRoutes.forEach((route) => {
+        router.addRoute(route);
+      });
+    },
     /** */
     async doLogout() {
       await userProfileApi.doLogout();

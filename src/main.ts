@@ -4,6 +4,7 @@ import router from './router';
 import { defaultGurad } from './router/router-guard';
 
 // Configuration
+import setupDirective from '@/conf/app-directive';
 import setupAxiosConfig from '@/conf/axios-config';
 import setupGlobalComponents from '@/conf/global-components';
 import setupPiniaConfig from '@/conf/pinia-config';
@@ -21,6 +22,7 @@ import '@/assets/main.scss';
 
 const app = createApp(App);
 
+setupDirective(app);
 setupAxiosConfig(app);
 setupPiniaConfig(app);
 setupGlobalComponents(app);

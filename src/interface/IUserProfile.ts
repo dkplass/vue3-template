@@ -8,7 +8,7 @@ export interface IUserProfileReq {
 
 /** */
 export interface IUserProfile {
-  id: number;
+  id: Nullable<number>;
   username: string;
   password: string;
   name: string;
@@ -16,5 +16,12 @@ export interface IUserProfile {
   phone: string;
   avatar: string;
   introduction: string;
-  roles: string[];
+  roles: (keyof typeof RolesType)[];
+}
+
+/** */
+export enum RolesType {
+  admin = 'admin',
+  editor = 'editor',
+  visitor = 'visitor'
 }

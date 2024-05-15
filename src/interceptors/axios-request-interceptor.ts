@@ -1,11 +1,14 @@
 import { IGNORE_GLOBAL_SPINNER_URLS } from '@/conf/app-config';
 import { useGlobalStore } from '@/stores/global';
+import { useUserProfileStore } from '@/stores/userProfile';
 import { delay } from 'lodash-es';
 import type { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import type { App } from 'vue';
 
 function handleRequest(config: InternalAxiosRequestConfig, app: App) {
   const globalStore = useGlobalStore();
+
+  const userProfileStore = useUserProfileStore();
   // const { $keycloak } = app.config.globalProperties;
 
   const isIgnoreUrls = IGNORE_GLOBAL_SPINNER_URLS.some((url) => {
@@ -21,6 +24,9 @@ function handleRequest(config: InternalAxiosRequestConfig, app: App) {
   // if ($keycloak) {
   //   config.headers!.Authorization = `Bearer ${$keycloak.token}`;
   // }
+  if (userProfileStore.token) {
+    config.headers['X-Access-Token'] = userProfileStore.token;
+  }
 
   globalStore.doResetSessionExpiredTime();
 

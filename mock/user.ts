@@ -1,4 +1,4 @@
-import { IUserProfile } from '../src/interface/IUserProfile';
+import { IUserProfile, RolesType } from '../src/interface/IUserProfile';
 import { faker } from '@faker-js/faker';
 import { Response, Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,7 +15,7 @@ const userList: IUserProfile[] = [
     introduction: 'I am a super administrator',
     email: 'admin@test.com',
     phone: '1234567890',
-    roles: ['admin']
+    roles: [RolesType.admin]
   },
   {
     id: 1,
@@ -95,6 +95,25 @@ export const getUser = (req: Request, res: Response) => {
 export const getUserProfile = (req: Request, res: Response) => {
   // get token
   // req.header('X-Access-Token')
+  const token = req.header('X-Access-Token');
+
+  return res.json({
+    code: 20000,
+    body: userStore
+  });
+};
+
+export const changeRole = (req: Request, res: Response) => {
+  const { role = '' } = { ...req.body };
+
+  if (role === 'admin') {
+    userStore = userList[0];
+  }
+
+  if (role === 'editor') {
+    userStore = userList[1];
+  }
+
   return res.json({
     code: 20000,
     body: userStore
