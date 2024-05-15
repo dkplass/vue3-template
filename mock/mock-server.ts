@@ -1,4 +1,4 @@
-import route from './route';
+import route from './routes/index';
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';

@@ -1,5 +1,5 @@
-import setProductRoute from './routes/product';
-import setUserRoute from './routes/user';
+import setProductRoute from './product';
+import setUserRoute from './user';
 import cors from 'cors';
 import express from 'express';
 

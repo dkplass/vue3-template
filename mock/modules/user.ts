@@ -1,4 +1,4 @@
-import { IUserProfile, RolesType } from '../src/interface/IUserProfile';
+import { IUserProfile, RolesType } from '../../src/interface/IUserProfile';
 import { faker } from '@faker-js/faker';
 import { Response, Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';

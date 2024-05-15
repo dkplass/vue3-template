@@ -1,4 +1,4 @@
-import { login, getUserProfile, changeRole, logout } from '../user';
+import { login, getUserProfile, changeRole, logout } from '../modules/user';
 
 export default (router: any) => {
   router.post('/user/login', login);

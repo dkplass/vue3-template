@@ -1,6 +1,6 @@
-import productSmall from './data/products-small.json';
-import product from './data/products.json';
-import { IProduct } from '../src/interface/IProduct';
+import { IProduct } from '../../src/interface/IProduct';
+import productSmall from '../data/products-small.json';
+import product from '../data/products.json';
 import { Response, Request } from 'express';
 
 const productList: IProduct[] = product.data;
