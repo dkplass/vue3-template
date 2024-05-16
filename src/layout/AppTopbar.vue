@@ -113,7 +113,6 @@ onBeforeUnmount(() => {
   <div class="layout-topbar">
     <router-link to="/" class="layout-topbar-logo">
       <img :src="logoUrl" alt="logo" />
-      <span>VITE</span>
     </router-link>
 
     <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
