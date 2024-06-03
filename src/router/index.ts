@@ -38,6 +38,21 @@ export const constantRoutes: RouteRecordRaw[] = [
         }
       }
     ]
+  },
+  {
+    path: '/playground',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/PlayGround.vue'),
+        name: 'playground',
+        meta: {
+          title: 'Playground',
+          affix: true
+        }
+      }
+    ]
   }
 ];
 
@@ -72,10 +87,10 @@ export const asyncRoutes: RouteRecordRaw[] = [
       },
       {
         path: 'role',
-        component: () => shallowRef(Constructor),
+        component: () => import('@/views/permission/Role.vue'),
         name: 'RolePermission',
         meta: {
-          title: 'rolePermission',
+          title: 'Role Permission',
           roles: ['admin'] // or you can only set roles in sub nav
         }
       }

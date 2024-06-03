@@ -1,4 +1,5 @@
 import setProductRoute from './product';
+import setRoleRoute from './role';
 import setUserRoute from './user';
 import cors from 'cors';
 import express from 'express';
@@ -12,7 +13,8 @@ router.get('/', (req, res) => {
   res.send(`此路徑是: localhost:9090/api`);
 });
 
-setUserRoute(router);
 setProductRoute(router);
+setRoleRoute(router);
+setUserRoute(router);
 
 export default router;

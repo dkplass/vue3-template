@@ -1,4 +1,4 @@
-import { getProducts, getProductsSmall } from '../modules/product';
+import { getProducts, getProductsSmall } from '../controllers/product';
 
 export default (router: any) => {
   router.post('/product/getProducts', getProducts);
