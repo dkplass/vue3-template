@@ -1,6 +1,10 @@
 # template
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue3、TypeScript 後台模板  
+Express 測試API
+
+帳號：admin、editor  
+密碼：隨意
 
 ## Recommended IDE Setup
 
@@ -42,4 +46,10 @@ npm run test:unit
 
 ```sh
 npm run lint
+```
+
+### Run express mock server
+
+```sh
+npm run mock
 ```
